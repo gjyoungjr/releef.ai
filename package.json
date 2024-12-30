@@ -1,0 +1,16 @@
+{
+  "name": "releef.ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:frontend": "pnpm --filter ./packages/frontend run dev"
+  },
+  "keywords": [
+    "AI",
+    "Knowledge Graph"
+  ],
+  "author": "Gilbert Young Jr.",
+  "license": "ISC",
+  "packageManager": "pnpm@9.12.1"
+}

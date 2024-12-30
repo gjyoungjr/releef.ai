@@ -1,0 +1,12 @@
+{
+  "name": "@rekha-ai/types",
+  "version": "1.0.0",
+  "description": "Shared types.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.d.ts"
+}

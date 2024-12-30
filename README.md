@@ -1,1 +1,1 @@
-# releef.ai
+# Rekha AI
