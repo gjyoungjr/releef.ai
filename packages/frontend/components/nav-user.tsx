@@ -7,7 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { signOut } from "@/auth";
-import { User } from "@rekha-ai/types";
+import { User } from "@releef.ai/types";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {

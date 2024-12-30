@@ -1,6 +1,6 @@
 import * as React from "react";
 import LoginForm from "@/components/auth/login-form";
-import { Session } from "@rekha-ai/types";
+import { Session } from "@releef.ai/types";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 

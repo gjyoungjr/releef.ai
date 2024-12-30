@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@rekha-ai/types"],
+  transpilePackages: ["@releef.ai/types"],
 };
 
 export default nextConfig;

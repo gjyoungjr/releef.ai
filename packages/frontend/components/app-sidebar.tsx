@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Session } from "@rekha-ai/types";
+import { Session } from "@releef.ai/types";
 
 const data = {
   teams: [

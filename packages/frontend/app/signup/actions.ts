@@ -5,7 +5,7 @@ import { ResultCode, getStringFromBuffer } from "@/lib/utils";
 import { z } from "zod";
 import { getUser } from "../login/actions";
 import { AuthError } from "next-auth";
-import { User } from "@rekha-ai/types";
+import { User } from "@releef.ai/types";
 
 const CORE_API_URL = process.env.CORE_API_URL;
 

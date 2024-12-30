@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { z } from "zod";
 import { ResultCode } from "@/lib/utils";
-import { User } from "@rekha-ai/types";
+import { User } from "@releef.ai/types";
 
 const CORE_API_URL = process.env.CORE_API_URL;
 

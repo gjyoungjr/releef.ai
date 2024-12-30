@@ -2,7 +2,7 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { toast } from "sonner";
 import { auth } from "@/auth";
-import { Session } from "@rekha-ai/types";
+import { Session } from "@releef.ai/types";
 
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_REGION!,
