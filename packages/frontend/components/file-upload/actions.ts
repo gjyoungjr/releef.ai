@@ -44,8 +44,7 @@ const getS3SignedURL = async (
 
     return signedUrl;
   } catch (error) {
-    console.error(`Failed to generate signed URL for ${fileName}`);
-    // (error, `Failed to generate signed URL for ${fileName}`);
+    console.error(`Failed to generate signed URL for ${fileName}`, error);
   }
 };
 
@@ -77,7 +76,7 @@ export const uploadFile = async (
       }
     }
   } catch (error) {
-    // handleApiError(error, `Failed to upload ${file.name}`);
+    console.error(`Failed to upload ${file.name}`, error);
     status = "ERROR";
   } finally {
     return { fileName: file.name, status: status };

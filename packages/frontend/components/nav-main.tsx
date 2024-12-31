@@ -54,25 +54,28 @@ export function NavMain({ user }: { user: Pick<User, "id"> }) {
     Array<{ name: string; status: string }> | undefined
   >(undefined);
 
-  const onUpload = useCallback(async (files: File[]) => {
-    if (!files.length) return;
-    setFiles(files.map((f) => ({ name: f.name, status: "UPLOADING" }))); // default status
+  const onUpload = useCallback(
+    async (files: File[]) => {
+      if (!files.length) return;
+      setFiles(files.map((f) => ({ name: f.name, status: "UPLOADING" }))); // default status
 
-    const uploadResults = await Promise.all(
-      files.map((file) => uploadFile(file, user.id))
-    );
+      const uploadResults = await Promise.all(
+        files.map((file) => uploadFile(file, user.id))
+      );
 
-    // Update status for each file based on upload results
-    setFiles((prevFiles) =>
-      prevFiles?.map((f) => {
-        const result = uploadResults.find((res) => res.fileName === f.name);
-        if (result) {
-          return { name: f.name, status: result.status };
-        }
-        return f;
-      })
-    );
-  }, []);
+      // Update status for each file based on upload results
+      setFiles((prevFiles) =>
+        prevFiles?.map((f) => {
+          const result = uploadResults.find((res) => res.fileName === f.name);
+          if (result) {
+            return { name: f.name, status: result.status };
+          }
+          return f;
+        })
+      );
+    },
+    [user.id]
+  );
 
   return (
     <SidebarMenu>
