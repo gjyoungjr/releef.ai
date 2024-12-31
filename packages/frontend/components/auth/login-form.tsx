@@ -11,7 +11,6 @@ import { useFormState, useFormStatus } from "react-dom";
 import { useRouter } from "next/navigation";
 import { getMessageFromCode } from "@/lib/utils";
 import { authenticate } from "@/app/login/actions";
-import { Loader } from "lucide-react";
 
 export default function LoginForm() {
   const router = useRouter();
