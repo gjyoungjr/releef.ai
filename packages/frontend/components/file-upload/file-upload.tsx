@@ -82,7 +82,7 @@ export function FileUploader({
                 and drop
               </p>
               <p className="text-muted-foreground text-sm">
-                Supported formats: CSV
+                Supported formats: PDF
               </p>
               <p className="text-muted-foreground text-sm">
                 {maxFileSizeInMB} MB max file size

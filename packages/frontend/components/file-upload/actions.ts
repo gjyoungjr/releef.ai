@@ -1,34 +1,35 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { toast } from "sonner";
-import { auth } from "@/auth";
-import { Session } from "@releef.ai/types";
 
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_REGION!,
   credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY!,
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID!,
     secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY!,
   },
 });
 
-const generateFileKey = async (
-  fileName: string
-): Promise<string | undefined> => {
-  try {
-    const session = (await auth()) as Session;
-    const formattedFileName = fileName.toLowerCase().replace(/[ \s]+/g, "_");
+console.log(
+  process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+  process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY
+);
 
-    return `${session.user.id}/${formattedFileName}`;
-  } catch (e) {
-    console.error(`Failed to generate file key for ${fileName}`);
+const generateFileKey = (fileName: string, userId: string): string => {
+  if (!fileName || !userId) {
+    throw new Error("Invalid input: fileName and userId are required.");
   }
+
+  const formattedFileName = fileName.toLowerCase().replace(/\s+/g, "_");
+  return `${userId}/${formattedFileName}`;
 };
 const getS3SignedURL = async (
-  fileName: string
+  fileName: string,
+  userId: string
 ): Promise<string | undefined> => {
   try {
-    const fileKey = await generateFileKey(fileName);
+    const fileKey = generateFileKey(fileName, userId);
+
     if (!fileKey) return;
 
     const putObjectCommand = new PutObjectCommand({
@@ -43,19 +44,22 @@ const getS3SignedURL = async (
 
     return signedUrl;
   } catch (error) {
+    console.error(`Failed to generate signed URL for ${fileName}`);
     // (error, `Failed to generate signed URL for ${fileName}`);
   }
 };
 
 export const uploadFile = async (
-  file: File
+  file: File,
+  userId: string
 ): Promise<{ fileName: string; status: string }> => {
   let status: string = "SUCCESS"; // Default status
 
   try {
-    const signedUrl = await getS3SignedURL(file.name);
+    const signedUrl = await getS3SignedURL(file.name, userId);
 
     if (!signedUrl) {
+      toast.error(`Failed to upload ${file.name}`);
       status = "FAILED";
     } else {
       // Upload the file to S3 using the signed URL

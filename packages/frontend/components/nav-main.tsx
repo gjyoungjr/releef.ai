@@ -17,7 +17,7 @@ import {
 import { usePathname } from "next/navigation";
 import { FileUploader } from "@/components/file-upload/file-upload";
 import { uploadFile } from "@/components/file-upload/actions";
-
+import { User } from "@releef.ai/types";
 const data = [
   {
     title: "Upload",
@@ -47,7 +47,7 @@ const data = [
 ];
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
 
-export function NavMain() {
+export function NavMain({ user }: { user: Pick<User, "id"> }) {
   const currentPathName = usePathname();
   const [isFileUploadOpen, setFileUploadOpen] = useState<boolean>(false);
   const [files, setFiles] = useState<
@@ -58,7 +58,9 @@ export function NavMain() {
     if (!files.length) return;
     setFiles(files.map((f) => ({ name: f.name, status: "UPLOADING" }))); // default status
 
-    const uploadResults = await Promise.all(files.map(uploadFile));
+    const uploadResults = await Promise.all(
+      files.map((file) => uploadFile(file, user.id))
+    );
 
     // Update status for each file based on upload results
     setFiles((prevFiles) =>
@@ -106,7 +108,7 @@ export function NavMain() {
           onUpload={onUpload}
           maxNumFiles={1}
           acceptedFileTypes={{
-            "text/csv": [".csv"],
+            "application/pdf": [".pdf"],
           }}
           maxFileSize={MAX_FILE_SIZE}
           files={files}
