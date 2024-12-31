@@ -63,7 +63,7 @@ export async function AppSidebar({
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        <NavMain />
+        <NavMain user={session.user} />
       </SidebarHeader>
       <SidebarContent>
         <NavSecondary items={data.navSecondary} className="mt-auto" />
