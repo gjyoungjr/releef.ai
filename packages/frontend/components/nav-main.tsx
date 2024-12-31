@@ -41,7 +41,7 @@ const data = [
   },
   {
     title: "Reports",
-    url: "/dashboard/documents",
+    url: "/dashboard/reports",
     icon: BookText,
   },
 ];
