@@ -36,15 +36,15 @@ export class CoreApiStack extends cdk.Stack {
     });
 
     // Lambda function to handle the new API path
-    const listUserDocuments = new NodeJSLambda(this, "ListUserDocuments", {
-      entry: `lib/lambda/document/list-documents.ts`,
-      description: "List all documents for a user.",
+    const listReports = new NodeJSLambda(this, "ListReports", {
+      entry: `lib/lambda/document/list-report.ts`,
+      description: "List all reports for a user.",
       ...nodeJsFunctionProps,
       environment: {
         CORE_TABLE_NAME: props.coreTable.tableName,
       },
     });
-    props.coreTable.grantReadData(listUserDocuments);
+    props.coreTable.grantReadData(listReports);
 
     const getUser = new NodeJSLambda(this, "GetUser", {
       entry: `lib/lambda/auth/get-user.ts`,
@@ -67,11 +67,11 @@ export class CoreApiStack extends cdk.Stack {
     props.coreTable.grantWriteData(saveUser);
 
     httpApi.addRoutes({
-      path: "/document",
+      path: "/report",
       methods: [apigw.HttpMethod.GET],
       integration: new integrations.HttpLambdaIntegration(
-        "ListDocumentsIntegration",
-        listUserDocuments
+        "ListReportsIntegration",
+        listReports
       ),
     });
 

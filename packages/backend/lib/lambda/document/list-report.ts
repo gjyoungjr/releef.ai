@@ -5,15 +5,24 @@ import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 const ddbClient = new DynamoDBClient({ region: process.env.AWS_REGION });
 const CORE_TABLE_NAME = process.env.CORE_TABLE_NAME;
 
-// TODO: Build DynamoDB Adapter
-// TODO: Build toHTTPResponse function
-export const handler: APIGatewayProxyHandler = async (event, context) => {
+export const handler: APIGatewayProxyHandler = async (event) => {
   try {
     console.log("Received event:", JSON.stringify(event, null, 2));
 
+    // Extract userId from query string parameters
+    const userId = event.queryStringParameters?.userId;
+    if (!userId) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: "User ID is required",
+        }),
+      };
+    }
+
     const expressionAttributeValues = marshall({
-      ":PK": `USER#546844e8-4051-7062-1809-5b667e84c50e`,
-      ":SK": "DOCUMENT#",
+      ":PK": `USER#${userId}`,
+      ":SK": "REPORT",
     });
 
     const result = await ddbClient.send(
