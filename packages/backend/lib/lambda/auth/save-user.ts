@@ -29,6 +29,7 @@ export const handler: APIGatewayProxyHandler = async (event, context) => {
       gsi1SK: `USER_BY_DATE_CREATED#${dateCreated}`,
       salt: requestBody.salt,
       hashedPassword: requestBody.hashedPassword,
+      type: "USER",
     };
 
     await ddbClient.send(
