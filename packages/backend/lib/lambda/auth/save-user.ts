@@ -30,6 +30,8 @@ export const handler: APIGatewayProxyHandler = async (event, context) => {
       salt: requestBody.salt,
       hashedPassword: requestBody.hashedPassword,
       type: "USER",
+      id: requestBody.id,
+      version: 1,
     };
 
     await ddbClient.send(
