@@ -23,6 +23,13 @@ export interface User extends DDBRecord {
   readonly id: string;
 }
 
+/**
+ * A report record.
+ */
+export interface Report extends DDBRecord {
+  readonly title: string;
+}
+
 export type ServerActionResult<Result> = Promise<
   | Result
   | {
