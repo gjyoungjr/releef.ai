@@ -17,8 +17,6 @@ export default function LoginForm() {
   const [result, dispatch] = useFormState(authenticate, undefined);
   const { pending } = useFormStatus();
 
-  console.log("pending", pending);
-
   React.useEffect(() => {
     if (result) {
       if (result.type === "error") {

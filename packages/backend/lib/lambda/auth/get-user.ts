@@ -6,7 +6,6 @@ const ddbClient = new DynamoDBClient({ region: process.env.AWS_REGION });
 const CORE_TABLE_NAME = process.env.CORE_TABLE_NAME;
 
 export const handler: APIGatewayProxyHandler = async (event, context) => {
-  console.log("Received get user event:", JSON.stringify(event, null, 2));
   try {
     const email = event.queryStringParameters?.userId; // TODO: Fix path parameter
 

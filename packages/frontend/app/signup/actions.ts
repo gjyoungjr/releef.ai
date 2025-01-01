@@ -12,7 +12,6 @@ const CORE_API_URL = process.env.CORE_API_URL;
 async function saveUser(
   user: Pick<User, "id" | "name" | "email" | "hashedPassword" | "salt">
 ) {
-  console.log("Saving user:", user);
   const response = await fetch(`${CORE_API_URL}/user`, {
     method: "POST",
     headers: {

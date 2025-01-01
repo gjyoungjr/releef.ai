@@ -7,8 +7,6 @@ const CORE_TABLE_NAME = process.env.CORE_TABLE_NAME;
 
 export const handler: APIGatewayProxyHandler = async (event, context) => {
   try {
-    console.log("Received save user event:", JSON.stringify(event, null, 2));
-
     const requestBody = JSON.parse(event.body || "{}");
 
     // Validate required fields

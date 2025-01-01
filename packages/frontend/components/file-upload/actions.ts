@@ -10,11 +10,6 @@ const s3 = new S3Client({
   },
 });
 
-console.log(
-  process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
-  process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY
-);
-
 const generateFileKey = (fileName: string, userId: string): string => {
   if (!fileName || !userId) {
     throw new Error("Invalid input: fileName and userId are required.");
