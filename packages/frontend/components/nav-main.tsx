@@ -18,6 +18,8 @@ import { usePathname } from "next/navigation";
 import { FileUploader } from "@/components/file-upload/file-upload";
 import { uploadFile } from "@/components/file-upload/actions";
 import { User } from "@releef.ai/types";
+import { useRouter } from "next/navigation";
+
 const data = [
   {
     title: "Upload",
@@ -48,6 +50,7 @@ const data = [
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
 
 export function NavMain({ user }: { user: Pick<User, "id"> }) {
+  const router = useRouter();
   const currentPathName = usePathname();
   const [isFileUploadOpen, setFileUploadOpen] = useState<boolean>(false);
   const [files, setFiles] = useState<
@@ -73,6 +76,9 @@ export function NavMain({ user }: { user: Pick<User, "id"> }) {
           return f;
         })
       );
+      setFileUploadOpen(false);
+      router.replace("/dashboard/reports");
+      router.refresh();
     },
     [user.id]
   );
