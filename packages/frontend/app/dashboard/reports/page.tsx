@@ -10,13 +10,21 @@ import {
 import { FileTextIcon } from "lucide-react";
 import { listReports } from "./action";
 import PageBreadCrumb from "@/components/page-breadcrumb";
+import Upload from "@/components/test-upload";
+import { auth } from "@/auth";
+import { Session } from "@releef.ai/types";
+
+export const revalidate = 10;
+export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const reports = await listReports();
+  const session = (await auth()) as Session;
 
   return (
     <>
       <PageBreadCrumb title="Reports & Insights" />
+      <Upload user={session.user} />
       <Table>
         <TableHeader>
           <TableRow>
