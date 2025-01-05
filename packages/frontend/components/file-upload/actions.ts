@@ -15,7 +15,8 @@ const generateFileKey = (fileName: string, userId: string): string => {
     throw new Error("Invalid input: fileName and userId are required.");
   }
 
-  const formattedFileName = fileName.toLowerCase().replace(/\s+/g, "_");
+  const formattedFileName = fileName.replace(/[\s\u00A0\t]+/g, "-"); // Removes all spaces, tabs, and non-breaking spaces
+  console.log("formattedFileName", formattedFileName);
   return `${userId}/${formattedFileName}`;
 };
 const getS3SignedURL = async (
