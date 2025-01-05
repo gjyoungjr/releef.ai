@@ -15,7 +15,8 @@ const CORE_TABLE_NAME = process.env.CORE_TABLE_NAME;
 
 const storeReport = async (event: S3EventRecord) => {
   const userId = event.s3.object.key.split("/")[0];
-  const fileName = event.s3.object.key.split("/")[1].replace(/\s+/g, "_");
+  const fileName = event.s3.object.key.split("/")[1];
+  const decodedFileName = decodeURIComponent(fileName);
 
   const record: Report = {
     PK: `USER#${userId}`,
@@ -23,7 +24,7 @@ const storeReport = async (event: S3EventRecord) => {
     dateCreated: new Date().toISOString(),
     type: "REPORT",
     version: 1,
-    title: fileName,
+    title: decodedFileName,
   };
 
   await ddbClient.send(
