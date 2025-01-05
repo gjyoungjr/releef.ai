@@ -2,7 +2,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -13,9 +12,6 @@ import PageBreadCrumb from "@/components/page-breadcrumb";
 import Upload from "@/components/test-upload";
 import { auth } from "@/auth";
 import { Session } from "@releef.ai/types";
-
-export const revalidate = 10;
-export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const reports = await listReports();
@@ -43,7 +39,6 @@ export default async function Page() {
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter></TableFooter>
       </Table>
     </>
   );
