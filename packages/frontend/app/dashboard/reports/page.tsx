@@ -6,10 +6,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { FileTextIcon } from "lucide-react";
+import { FileTextIcon, Upload } from "lucide-react";
 import { listReports } from "./action";
 import PageBreadCrumb from "@/components/page-breadcrumb";
-import Upload from "@/components/test-upload";
+import { Uploader } from "@/components/file-upload/uploader";
 import { auth } from "@/auth";
 import { Session } from "@releef.ai/types";
 
@@ -20,7 +20,7 @@ export default async function Page() {
   return (
     <>
       <PageBreadCrumb title="Reports & Insights" />
-      <Upload user={session.user} />
+      <Uploader user={session.user} />
       <Table>
         <TableHeader>
           <TableRow>
