@@ -101,7 +101,7 @@ export function FileUploader({
         {files &&
           files.length > 0 &&
           files.map(({ name, status }) => {
-            const formattedFileName = name.toLowerCase().replace(/\s/g, "_");
+            const formattedFileName = name.replace(/[\s\u00A0\t]+/g, "-"); // Removes all spaces, tabs, and non-breaking spaces
             return (
               <Card className="mb-2 h-[65px]" key={name}>
                 <CardContent className="mt-2">

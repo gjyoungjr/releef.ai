@@ -2,23 +2,16 @@
 
 import React, { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import {
-  Home,
-  Sparkles,
-  BookText,
-  UploadCloudIcon,
-  ClipboardCheck,
-} from "lucide-react";
+import { UploadCloudIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FileUploader } from "@/components/file-upload/file-upload";
 import { User } from "@releef.ai/types";
 import { uploadFile } from "@/components/file-upload/actions";
 import { Dialog } from "@/components/ui/dialog";
-import { revalidatePath } from "next/cache";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
 
-export default function Upload({ user }: { user: Pick<User, "id"> }) {
+export function Uploader({ user }: { user: Pick<User, "id"> }) {
   const router = useRouter();
 
   const [isFileUploadOpen, setFileUploadOpen] = useState<boolean>(false);
@@ -46,13 +39,19 @@ export default function Upload({ user }: { user: Pick<User, "id"> }) {
         })
       );
       setFileUploadOpen(false);
-      router.refresh();
+      setTimeout(() => {
+        router.refresh();
+      }, 1500);
     },
-    [user.id]
+    [user.id, router]
   );
   return (
-    <>
-      <Button onClick={() => setFileUploadOpen(true)}>
+    <div>
+      <Button
+        variant={"outline"}
+        onClick={() => setFileUploadOpen(true)}
+        size="sm"
+      >
         <UploadCloudIcon className="w-4 h-4 mr-2" />
         Upload
       </Button>
@@ -70,6 +69,6 @@ export default function Upload({ user }: { user: Pick<User, "id"> }) {
           files={files}
         />
       </Dialog>
-    </>
+    </div>
   );
 }
