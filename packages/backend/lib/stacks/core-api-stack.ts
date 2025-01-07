@@ -46,6 +46,16 @@ export class CoreApiStack extends cdk.Stack {
     });
     props.coreTable.grantReadData(listReports);
 
+    const getReport = new NodeJSLambda(this, "GetReport", {
+      entry: `lib/lambda/document/get-report.ts`,
+      description: "Get a single report.",
+      ...nodeJsFunctionProps,
+      environment: {
+        CORE_TABLE_NAME: props.coreTable.tableName,
+      },
+    });
+    props.coreTable.grantReadData(getReport);
+
     const getUser = new NodeJSLambda(this, "GetUser", {
       entry: `lib/lambda/auth/get-user.ts`,
       description: "Get a user.",
@@ -74,6 +84,14 @@ export class CoreApiStack extends cdk.Stack {
         listReports
       ),
     });
+    httpApi.addRoutes({
+      path: "/report/{id}",
+      methods: [apigw.HttpMethod.GET],
+      integration: new integrations.HttpLambdaIntegration(
+        "GetReportIntegration",
+        getReport
+      ),
+    });
 
     httpApi.addRoutes({
       path: "/user/{userId}", // TODO: Fix path parameter
@@ -84,9 +102,8 @@ export class CoreApiStack extends cdk.Stack {
       ),
     });
 
-    // Attach new route for saving a user
     httpApi.addRoutes({
-      path: "/user", // Save user without a specific user ID in the path
+      path: "/user",
       methods: [apigw.HttpMethod.POST],
       integration: new integrations.HttpLambdaIntegration(
         "SaveUserIntegration",
