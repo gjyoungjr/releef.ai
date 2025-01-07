@@ -6,12 +6,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { FileTextIcon, Upload } from "lucide-react";
+import { FileTextIcon } from "lucide-react";
 import { listReports } from "./action";
-import PageBreadCrumb from "@/components/page-breadcrumb";
 import { Uploader } from "@/components/file-upload/uploader";
 import { auth } from "@/auth";
 import { Session } from "@releef.ai/types";
+import { ReportActions } from "@/components/reports/report-actions";
+import PageBreadCrumb from "@/components/page-breadcrumb";
 
 export default async function Page() {
   const reports = await listReports();
@@ -25,7 +26,8 @@ export default async function Page() {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">File name</TableHead>
-            <TableHead className="text-right">Date uploaded</TableHead>
+            <TableHead>Date uploaded</TableHead>
+            <TableHead></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -35,7 +37,10 @@ export default async function Page() {
                 <FileTextIcon className="w-4 h-4 mr-2" />
                 {report.title}
               </TableCell>
-              <TableCell className="text-right">{report.dateCreated}</TableCell>
+              <TableCell>{report.dateCreated}</TableCell>
+              <TableCell>
+                <ReportActions report={report} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
