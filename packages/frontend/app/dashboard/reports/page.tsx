@@ -25,7 +25,7 @@ export default async function Page() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">File name</TableHead>
+            <TableHead>File name</TableHead>
             <TableHead>Date uploaded</TableHead>
             <TableHead></TableHead>
           </TableRow>
@@ -33,7 +33,7 @@ export default async function Page() {
         <TableBody>
           {reports.map((report) => (
             <TableRow key={report.PK}>
-              <TableCell className="font-medium flex items-center">
+              <TableCell className="flex">
                 <FileTextIcon className="w-4 h-4 mr-2" />
                 {report.title}
               </TableCell>

@@ -18,30 +18,28 @@ export const ReportActions = ({ report }: { report: Report }) => {
   const reportId = report.SK.split("#")[1];
 
   return (
-    <div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Ellipsis className="w-4 h-4 cursor-pointer" />
-        </DropdownMenuTrigger>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Ellipsis className="w-4 h-4 cursor-pointer" />
+      </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="w-56 rounded-lg">
-          <DropdownMenuGroup>
-            <DropdownMenuItem
-              onClick={() => router.push(`/dashboard/report/${reportId}`)}
-            >
-              <ShieldCheck />
-              Verify compliance
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem className="text-destructive">
-              <Trash2 />
-              Move to trash
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+      <DropdownMenuContent className="w-55 rounded-lg ml-4">
+        <DropdownMenuGroup>
+          <DropdownMenuItem
+            onClick={() => router.push(`/dashboard/report/${reportId}`)}
+          >
+            <ShieldCheck />
+            Verify compliance
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem className="text-destructive">
+            <Trash2 />
+            Move to trash
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
