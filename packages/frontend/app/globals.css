@@ -92,3 +92,40 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.background-base {
+  min-height: 1400px;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.grid-bg {
+  background: url("/assets/grid-bg.svg") no-repeat;
+}
+
+.grain-background {
+  background: url("/assets/grain-bg.svg") repeat;
+}
+
+.grain-blur {
+  top: -220px;
+  background: url("/assets/grain-blur.svg") no-repeat 50%;
+}
+
+.large-blur {
+  left: -30px;
+  top: -864px;
+  border-radius: 750px;
+  opacity: 0.2;
+  background: radial-gradient(
+    70.71% 70.71% at 50% 50%,
+    rgba(117, 173, 255, 0.2) 0%,
+    rgba(117, 173, 255, 0) 70%,
+    rgba(117, 173, 255, 0) 100%
+  );
+}
+
+.small-blur {
+  background: url("/assets/small-blur.svg") no-repeat 50%;
+}
