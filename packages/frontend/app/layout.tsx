@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Releef.ai",
-  description: "AI-native compliance for sustainability reports.",
+  description: "AI gap analysis for sustainability reports.",
 };
 
 export default function RootLayout({

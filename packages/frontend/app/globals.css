@@ -96,7 +96,7 @@ body {
 .background-base {
   min-height: 1400px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   z-index: -1;
 }
 

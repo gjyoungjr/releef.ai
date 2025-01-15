@@ -1,7 +1,31 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
 // TODO: Split into components
 export default function Page() {
   return (
-    <div>
+    <div className="overflow-y-hidden">
+      <header className="fixed left-0 right-0 top-0 z-10 flex h-14 items-center p-4">
+        <nav className="flex items-center space-x-4 lg:space-x-6">
+          <Link
+            href="/dashboard"
+            className="group flex w-full items-center gap-x-2.5"
+          >
+            <div className="flex aspect-square size-7 items-center justify-center rounded-lg bg-primary text-sidebar-primary-foreground">
+              <span className="text-lg">🍃</span>
+            </div>
+            <h3 className="font-semibold tracking-wide">Releef</h3>
+          </Link>
+        </nav>
+        <div className="ml-auto">
+          <Button>
+            Join waitlist
+            <ArrowUpRight className="h-4 w-4" />
+          </Button>
+        </div>
+      </header>
+
       <div className={"grain-blur background-base"} />
       <div className={"grain-background background-base"} />
       <div className={"grid-bg background-base"} />
@@ -10,7 +34,7 @@ export default function Page() {
 
       <section
         className={
-          "mx-auto max-w-7xl px-[32px] relative flex items-center justify-center h-screen"
+          "mx-auto max-w-7xl px-[32px] relative flex items-center justify-center h-screen overflow-hidden"
         }
       >
         <div className={"text-center w-full "}>
@@ -33,6 +57,10 @@ export default function Page() {
           </p>
         </div>
       </section>
+
+      <footer className="fixed left-0 right-0 bottom-0 z-10 flex h-14 items-center p-4">
+        <p className="">Copyright</p>
+      </footer>
     </div>
   );
 }
