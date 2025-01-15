@@ -23,7 +23,7 @@ export const ReportActions = ({ report }: { report: Report }) => {
         <Ellipsis className="w-4 h-4 cursor-pointer" />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-55 rounded-lg ml-4">
+      <DropdownMenuContent className="w-55">
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => router.push(`/dashboard/report/${reportId}`)}

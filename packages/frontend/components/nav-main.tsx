@@ -5,14 +5,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Home, Sparkles, BookText, ClipboardCheck } from "lucide-react";
+import { Home, MessageCircle, BookText, ClipboardCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const data = [
   {
     title: "Ask AI",
-    url: "#",
-    icon: Sparkles,
+    url: "/dashboard/chat",
+    icon: MessageCircle,
   },
   {
     title: "Home",
