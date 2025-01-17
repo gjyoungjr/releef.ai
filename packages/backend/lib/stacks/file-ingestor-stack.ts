@@ -87,7 +87,7 @@ export class FileIngestorStack extends cdk.Stack {
     const embedDocument = new PythonFunction(this, "EmbedDocument", {
       entry: `lib/lambda/document/embed-doc`,
       index: "main.py",
-      runtime: Runtime.PYTHON_3_9,
+      runtime: Runtime.PYTHON_3_12,
       description: "Embed document.",
       timeout: cdk.Duration.minutes(TIMEOUT_IN_MINUTES),
       bundling: {
