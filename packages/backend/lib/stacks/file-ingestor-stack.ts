@@ -69,25 +69,10 @@ export class FileIngestorStack extends cdk.Stack {
       },
     });
 
-    // const storeDocMetadata = new PythonFunction(this, "StoreDocMetadata", {
-    //   entry: `lib/lambda/document/store-doc-metadata`,
-    //   index: "main.py",
-    //   runtime: Runtime.PYTHON_3_9,
-    //   description: "Stores document metadata.",
-    //   timeout: cdk.Duration.minutes(TIMEOUT_IN_MINUTES),
-    //   bundling: {
-    //     // translates to `rsync --exclude='.venv'`
-    //     assetExcludes: [".venv"],
-    //   },
-    //   environment: {
-    //     CORE_TABLE_NAME: props.coreTable.tableName,
-    //   },
-    // });
-
     const embedDocument = new PythonFunction(this, "EmbedDocument", {
       entry: `lib/lambda/document/embed-doc`,
       index: "main.py",
-      runtime: Runtime.PYTHON_3_12,
+      runtime: Runtime.PYTHON_3_10,
       description: "Embed document.",
       timeout: cdk.Duration.minutes(TIMEOUT_IN_MINUTES),
       bundling: {
@@ -99,6 +84,7 @@ export class FileIngestorStack extends cdk.Stack {
         PINECONE_INDEX_NAME: process.env.PINECONE_INDEX_NAME!,
         CORE_TABLE_NAME: props.coreTable.tableName,
       },
+      memorySize: 1024,
     });
 
     props.coreTable.grantReadWriteData(storeReport);
