@@ -36,7 +36,7 @@ export default function Page() {
           </h1>
           <p className="mt-6 text-[18px] leading-[27px] md:text-[20px] md:leading-[30px]">
             Identify compliance gaps, streamline reporting, and drive
-            sustainability goals with the power of AI
+            sustainability goals with the power of AI.
           </p>
         </div>
       </section>
