@@ -16,16 +16,19 @@ def handler(event, context):
                 bucket_name = s3_event['s3']['bucket']['name']
                 object_key = s3_event['s3']['object']['key']
                 
+                print(f"Bucket: {bucket_name}")
+                print(f"Object: {object_key}")
+                                
                 response = s3.get_object(Bucket=bucket_name, Key=object_key)
                 file_stream = response['Body'].read()
                 
-                # Open the PDF document with PyMuPDF (fitz)
-                doc = fitz.open(stream=file_stream, filetype="pdf")
                 
-                # Extract and print text from each page
+                doc = fitz.open(stream=file_stream, filetype="pdf")
+                print(doc)
+                
                 for page in doc:
                     text = page.get_text().encode("utf8").decode("utf8")
-                    print(text)
+                    ## Make API call here to embed report
                 
         return {
             'statusCode': 200,
