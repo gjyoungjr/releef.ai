@@ -94,9 +94,9 @@ body {
 }
 
 .background-base {
-  min-height: 1400px;
+  min-height: 1000px;
   width: 100%;
-  position: fixed;
+  position: absolute;
   z-index: -1;
 }
 
@@ -104,9 +104,9 @@ body {
   background: url("/assets/grid-bg.svg") no-repeat;
 }
 
-.grain-background {
+/* .grain-background {
   background: url("/assets/grain-bg.svg") repeat;
-}
+} */
 
 .grain-blur {
   top: -220px;
@@ -128,4 +128,16 @@ body {
 
 .small-blur {
   background: url("/assets/small-blur.svg") no-repeat 50%;
+}
+
+.pricing-card-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  padding: 1px 1px 0;
+  background: linear-gradient(180deg, #929292 49.5%, rgba(65, 75, 78, 0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
