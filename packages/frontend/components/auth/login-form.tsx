@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { useRouter } from "next/navigation";
 import { getMessageFromCode } from "@/lib/utils";
 import { authenticate } from "@/app/login/actions";
@@ -15,7 +15,6 @@ import { authenticate } from "@/app/login/actions";
 export default function LoginForm() {
   const router = useRouter();
   const [result, dispatch] = useFormState(authenticate, undefined);
-  const { pending } = useFormStatus();
 
   React.useEffect(() => {
     if (result) {

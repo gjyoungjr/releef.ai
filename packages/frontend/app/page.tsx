@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const FEATURES = [
@@ -39,10 +38,7 @@ export default function Page() {
           </Link>
         </nav>
         <div className="ml-auto">
-          <Button>
-            Join waitlist
-            <ArrowUpRight className="h-4 w-4" />
-          </Button>
+          <Button>Request a Demo</Button>
         </div>
       </header>
 
@@ -66,6 +62,7 @@ export default function Page() {
             className={cn(
               "rounded-lg bg-inherit backdrop-blur-[6px] overflow-hidden"
             )}
+            key={index}
           >
             <div
               className={cn(
