@@ -38,7 +38,9 @@ export default function Page() {
           </Link>
         </nav>
         <div className="ml-auto">
-          <Button>Request a Demo</Button>
+          <Link href="https://cal.com/gyoung/30min" target="_blank">
+            <Button>Request a Demo</Button>
+          </Link>
         </div>
       </header>
 
