@@ -101,7 +101,7 @@ body {
 }
 
 .grid-bg {
-  background: url("/assets/grid-bg.svg") no-repeat;
+  /* background: url("/assets/grid-bg.svg") no-repeat; */
 }
 
 /* .grain-background {
