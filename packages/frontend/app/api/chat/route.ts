@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   return createDataStreamResponse({
     execute: async (dataStream) => {
       const result = streamText({
-        model: openai("gpt-4o"),
+        model: openai("gpt-4o-mini"),
         messages,
         tools: {
           getWeatherInformation: tool({
