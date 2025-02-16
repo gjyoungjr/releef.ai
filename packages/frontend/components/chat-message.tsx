@@ -33,7 +33,7 @@ export function ChatMessages({
   // Scroll to bottom on mount and when messages change
   useEffect(() => {
     scrollToBottom();
-  }, []);
+  }, [messages]);
 
   useEffect(() => {
     const lastMessage = messages[messages.length - 1];
