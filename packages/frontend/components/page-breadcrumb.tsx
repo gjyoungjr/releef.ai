@@ -7,7 +7,6 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
-import { NavActions } from "@/components/nav-actions";
 
 export function PageBreadCrumb({ title }: { title: string }) {
   return (

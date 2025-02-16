@@ -1,23 +1,21 @@
 "use client";
 
 import { CHAT_ID } from "@/lib/constants";
-import { Message, useChat } from "ai/react";
-import { useEffect } from "react";
-import { toast } from "sonner";
+import { useChat } from "ai/react";
 import { ChatMessages } from "./chat-message";
 import { ChatPanel } from "./chat-panel";
-import { User } from "@releef.ai/types";
+// import { User } from "@releef.ai/types";
 
 export function Chat({
   id,
-  savedMessages = [],
+  // savedMessages = [],
   query,
-  user,
-}: {
+}: // user,
+{
   id: string;
-  savedMessages?: Message[];
+  // savedMessages?: Message[];
   query?: string;
-  user: Pick<User, "name">;
+  // user: Pick<User, "name">;
 }) {
   const {
     messages,
@@ -32,7 +30,7 @@ export function Chat({
     setData,
   } = useChat({
     // initialMessages: savedMessages,
-    // id: CHAT_ID,
+    id: CHAT_ID,
     // body: {
     //   id,
     // },

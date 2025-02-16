@@ -10,7 +10,6 @@ import { EmptyScreen } from "./empty-screen";
 // import { ModelSelector } from "./model-selector";
 // import { SearchModeToggle } from "./search-mode-toggle";
 import { Button } from "./ui/button";
-import { IconLogo } from "./ui/icons";
 
 interface ChatPanelProps {
   input: string;

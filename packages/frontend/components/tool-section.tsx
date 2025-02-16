@@ -21,14 +21,6 @@ export function ToolSection({ tool, isOpen, onOpenChange }: ToolSectionProps) {
           onOpenChange={onOpenChange}
         />
       );
-    case "video_search":
-      return (
-        <VideoSearchSection
-          tool={tool}
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-        />
-      );
     case "retrieve":
       return (
         <RetrieveSection

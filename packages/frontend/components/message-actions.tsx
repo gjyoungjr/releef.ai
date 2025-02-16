@@ -17,8 +17,8 @@ interface MessageActionsProps {
 
 export function MessageActions({
   message,
-  chatId,
-  enableShare,
+  // chatId,
+  // enableShare,
   className,
 }: MessageActionsProps) {
   const { isLoading } = useChat({
