@@ -10,7 +10,7 @@ import { EmptyScreen } from "./empty-screen";
 // import { ModelSelector } from "./model-selector";
 // import { SearchModeToggle } from "./search-mode-toggle";
 import { Button } from "./ui/button";
-// import { IconLogo } from "./ui/icons";
+import { IconLogo } from "./ui/icons";
 
 interface ChatPanelProps {
   input: string;
@@ -80,7 +80,7 @@ export function ChatPanel({
     >
       {messages.length === 0 && (
         <div className="mb-8">
-          {/* <IconLogo className="size-12 text-muted-foreground" /> */}
+          <IconLogo className="size-12 text-muted-foreground" />
         </div>
       )}
       <form
@@ -90,7 +90,7 @@ export function ChatPanel({
           messages.length > 0 ? "px-2 py-4" : "px-6"
         )}
       >
-        <div className="relative flex flex-col w-full gap-2 bg-muted rounded-3xl border border-input">
+        <div className="relative flex flex-col w-full gap-2 bg-sidebar rounded-3xl border border-input">
           <Textarea
             ref={inputRef}
             name="input"
