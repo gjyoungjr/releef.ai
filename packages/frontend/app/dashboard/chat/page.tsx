@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <div>
-      <PageBreadCrumb title="Ask AI" />
+      <PageBreadCrumb title="" />
       <Chat id={generateId()} user={session.user} />
     </div>
   );
