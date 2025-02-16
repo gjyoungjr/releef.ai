@@ -141,3 +141,8 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+
+ol {
+  list-style: decimal;
+  padding-left: 2rem;
+}
