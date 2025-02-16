@@ -74,10 +74,13 @@ export function ChatPanel({
       className={cn(
         "mx-auto w-full",
         messages.length > 0
-          ? "flex fixed bottom-0 left-0 right-0 bg-background justify-center items-center"
-          : "flex justify-center items-center min-h-screen"
+          ? "fixed bottom-0 right-0 left-0"
+          : "fixed bottom-8 left-0 right-0 top-6 flex flex-col items-center justify-center"
       )}
     >
+      {messages.length === 0 && (
+        <p className="mb-5 text-3xl font-semibold">How can I help?</p>
+      )}
       <form
         onSubmit={handleSubmit}
         className={cn(

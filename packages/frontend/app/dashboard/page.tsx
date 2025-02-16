@@ -1,5 +1,5 @@
 import React from "react";
-import PageBreadCrumb from "@/components/page-breadcrumb";
+import { PageBreadCrumb } from "@/components/page-breadcrumb";
 
 export default async function Page() {
   return (

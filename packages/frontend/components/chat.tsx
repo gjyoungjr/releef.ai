@@ -6,15 +6,18 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { ChatMessages } from "./chat-message";
 import { ChatPanel } from "./chat-panel";
+import { User } from "@releef.ai/types";
 
 export function Chat({
   id,
   savedMessages = [],
   query,
+  user,
 }: {
   id: string;
   savedMessages?: Message[];
   query?: string;
+  user: Pick<User, "name">;
 }) {
   const {
     messages,

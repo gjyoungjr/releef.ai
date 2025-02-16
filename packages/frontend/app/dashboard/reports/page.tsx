@@ -12,14 +12,14 @@ import { Uploader } from "@/components/file-upload/uploader";
 import { auth } from "@/auth";
 import { Session } from "@releef.ai/types";
 import { ReportActions } from "@/components/reports/report-actions";
-import PageBreadCrumb from "@/components/page-breadcrumb";
+import { PageBreadCrumb } from "@/components/page-breadcrumb";
 
 export default async function Page() {
   const reports = await listReports();
   const session = (await auth()) as Session;
 
   return (
-    <>
+    <div>
       <PageBreadCrumb title="Reports & Insights" />
       <Uploader user={session.user} />
       <Table>
@@ -45,6 +45,6 @@ export default async function Page() {
           ))}
         </TableBody>
       </Table>
-    </>
+    </div>
   );
 }

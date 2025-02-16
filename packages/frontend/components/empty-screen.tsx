@@ -3,20 +3,20 @@ import { ArrowRight } from "lucide-react";
 
 const exampleMessages = [
   {
-    heading: "What is DeepSeek R1?",
-    message: "What is DeepSeek R1?",
+    heading:
+      "What are the key reporting requirements under [E1/S1/G1], and why do they matter?",
+    message:
+      "What are the key reporting requirements under [E1/S1/G1], and why do they matter?",
   },
   {
-    heading: "Why is Nvidia growing rapidly?",
-    message: "Why is Nvidia growing rapidly?",
+    heading:
+      "How do the disclosure requirements for [E1] (Climate Change) compare to [E4] (Biodiversity)?",
+    message:
+      "How do the disclosure requirements for [E1] (Climate Change) compare to [E4] (Biodiversity)?",
   },
   {
-    heading: "Tesla vs Rivian",
-    message: "Tesla vs Rivian",
-  },
-  {
-    heading: "Summary: https://arxiv.org/pdf/2501.05707",
-    message: "Summary: https://arxiv.org/pdf/2501.05707",
+    heading: "What are the key general disclosure requirements under ESRS 2?",
+    message: "What are the key general disclosure requirements under ESRS 2?",
   },
 ];
 export function EmptyScreen({

@@ -53,13 +53,12 @@ export function BotMessage({
       )}
       components={{
         code({ node, inline, className, children, ...props }) {
-          if (children.length) {
-            if (children[0] == "▍") {
+          if (Array.isArray(children) && children.length) {
+            if (children[0] === "▍") {
               return (
                 <span className="mt-1 cursor-default animate-pulse">▍</span>
               );
             }
-
             children[0] = (children[0] as string).replace("`▍`", "▍");
           }
 

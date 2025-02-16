@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import PageBreadCrumb from "@/components/page-breadcrumb";
+import { PageBreadCrumb } from "@/components/page-breadcrumb";
 
 export const metadata: Metadata = {
   title: "Releef — Compliance",

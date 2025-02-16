@@ -38,9 +38,11 @@ export function CollapsibleMessage({
           {showIcon &&
             (role === "user" ? (
               <UserCircle2 size={20} className="text-muted-foreground" />
-            ) : null)
-            //   <IconLogo className="size-5" />
-          }
+            ) : (
+              <div className="flex aspect-square size-7 items-center justify-center rounded-lg border">
+                <span className="text-lg">🍃</span>
+              </div>
+            ))}
         </div>
       </div>
 
