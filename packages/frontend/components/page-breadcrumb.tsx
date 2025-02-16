@@ -23,9 +23,9 @@ export default function PageBreadCrumb({ title }: { title: string }) {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div className="ml-auto px-3">
+      {/* <div className="ml-auto px-3">
         <NavActions />
-      </div>
+      </div> */}
     </header>
   );
 }

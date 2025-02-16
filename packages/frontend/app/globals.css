@@ -88,9 +88,9 @@ body {
   * {
     @apply border-border;
   }
-  body {
+  /* body {
     @apply bg-background text-foreground;
-  }
+  } */
 }
 
 .background-base {
@@ -101,18 +101,18 @@ body {
 }
 
 .grid-bg {
-  /* background: url("/assets/grid-bg.svg") no-repeat; */
+  background: url("/assets/grid-bg.svg") no-repeat;
 }
 
 /* .grain-background {
   background: url("/assets/grain-bg.svg") repeat;
 } */
 
-.grain-blur {
+/* .grain-blur {
   top: -220px;
   background: url("/assets/grain-blur.svg") no-repeat 50%;
 }
-
+ */
 .large-blur {
   left: -30px;
   top: -864px;

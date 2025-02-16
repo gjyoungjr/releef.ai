@@ -52,7 +52,7 @@ export async function AppSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-7 items-center justify-center rounded-lg border text-sidebar-primary-foreground">
+                <div className="flex aspect-square size-7 items-center justify-center rounded-lg border">
                   <span className="text-lg">🍃</span>
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
