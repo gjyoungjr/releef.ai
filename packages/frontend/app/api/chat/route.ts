@@ -5,8 +5,6 @@ import { z } from "zod";
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  console.log("messages", messages);
-
   return createDataStreamResponse({
     execute: async (dataStream) => {
       const result = streamText({
@@ -25,8 +23,6 @@ export async function POST(req: Request) {
           }),
         },
       });
-
-      console.log("result", result);
 
       result.mergeIntoDataStream(dataStream);
     },
