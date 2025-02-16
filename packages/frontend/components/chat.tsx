@@ -28,23 +28,24 @@ export function Chat({
     data,
     setData,
   } = useChat({
-    initialMessages: savedMessages,
-    id: CHAT_ID,
-    body: {
-      id,
-    },
-    onFinish: () => {
-      window.history.replaceState({}, "", `/search/${id}`);
-    },
+    // initialMessages: savedMessages,
+    // id: CHAT_ID,
+    // body: {
+    //   id,
+    // },
+    // onFinish: () => {
+    //   window.history.replaceState({}, "", `/search/${id}`);
+    // },
     onError: (error) => {
-      toast.error(`Error in chat: ${error.message}`);
+      console.log("Error in chat", error);
+      // toast.error(`Error in chat: ${error.message}`);
     },
     sendExtraMessageFields: false, // Disable extra message fields
   });
 
-  useEffect(() => {
-    setMessages(savedMessages);
-  }, [id]);
+  // useEffect(() => {
+  //   setMessages(savedMessages);
+  // }, [id]);
 
   const onQuerySelect = (query: string) => {
     append({
