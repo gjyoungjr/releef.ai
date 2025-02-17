@@ -46,7 +46,7 @@ export async function AppSidebar({
   const session = (await auth()) as Session;
 
   return (
-    <Sidebar className="border-r-0" {...props}>
+    <Sidebar className="border-r-0 bg-sidebar" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

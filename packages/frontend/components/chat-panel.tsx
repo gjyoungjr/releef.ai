@@ -87,7 +87,7 @@ export function ChatPanel({
           messages.length > 0 ? "px-2 py-4" : "px-6"
         )}
       >
-        <div className="relative flex flex-col w-full gap-2 bg-sidebar rounded-3xl border border-input">
+        <div className="relative flex flex-col w-full gap-2 bg-muted rounded-3xl border border-input">
           <Textarea
             ref={inputRef}
             name="input"
