@@ -25,7 +25,7 @@ export default function Home() {
 
             <p className="text-white/80 text-xl mb-12 max-w-2xl mx-auto">
               Simplify ESG reporting and compliance with AI-powered automation
-              designed for today's businesses.
+              designed for today&apos;s businesses.
             </p>
 
             <Link href="https://cal.com/gyoung/30min" target="_blank">
