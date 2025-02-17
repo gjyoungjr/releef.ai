@@ -10,18 +10,8 @@ export async function POST(req: Request) {
       const result = streamText({
         model: openai("gpt-4o-mini"),
         messages,
-        tools: {
-          getWeatherInformation: tool({
-            description: "show the weather in a given city to the user",
-            parameters: z.object({ city: z.string() }),
-            execute: async ({}: { city: string }) => {
-              const weatherOptions = ["sunny", "cloudy", "rainy", "snowy"];
-              return weatherOptions[
-                Math.floor(Math.random() * weatherOptions.length)
-              ];
-            },
-          }),
-        },
+        system:
+          "You are a sustainabilty analyst. You provide detailed insights regarding sustainability regulations.",
       });
 
       result.mergeIntoDataStream(dataStream);
