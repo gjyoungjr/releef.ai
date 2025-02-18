@@ -4,11 +4,35 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
+  SidebarMenuAction,
+  SidebarMenuSub,
 } from "@/components/ui/sidebar";
-import { Home, MessageCircle, BookText, ClipboardCheck } from "lucide-react";
+import {
+  Home,
+  MessageCircle,
+  FolderOpen,
+  ShieldHalf,
+  ChevronRight,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible";
 
-const data = [
+interface NavItems {
+  title: string;
+  url: string;
+  icon: any; // TODO: Fix type
+  items?: {
+    title: string;
+    url: string;
+  }[];
+}
+const data: NavItems[] = [
   {
     title: "Ask AI",
     url: "/dashboard/chat",
@@ -21,13 +45,23 @@ const data = [
   },
   {
     title: "Compliance",
-    url: "/dashboard/compliance",
-    icon: ClipboardCheck,
+    url: "#",
+    icon: ShieldHalf,
+    items: [
+      {
+        title: "Frameworks",
+        url: "/dashboard/compliance",
+      },
+      {
+        title: "Assessment",
+        url: "#",
+      },
+    ],
   },
   {
     title: "Reports",
     url: "/dashboard/reports",
-    icon: BookText,
+    icon: FolderOpen,
   },
 ];
 
@@ -37,14 +71,44 @@ export function NavMain() {
   return (
     <SidebarMenu>
       {data.map((item) => (
-        <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild isActive={item.url === currentPathName}>
-            <a href={item.url}>
-              <item.icon />
-              <span>{item.title}</span>
-            </a>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
+        <Collapsible
+          key={item.title}
+          defaultOpen={item.items?.some(
+            (subItem) => subItem.url === currentPathName
+          )}
+        >
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={item.url === currentPathName}>
+              <a href={item.url}>
+                <item.icon />
+                <span>{item.title}</span>
+              </a>
+            </SidebarMenuButton>
+            {item.items?.length ? (
+              <>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuAction className="data-[state=open]:rotate-90">
+                    <ChevronRight />
+                    <span className="sr-only">Toggle</span>
+                  </SidebarMenuAction>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    {item.items?.map((subItem) => (
+                      <SidebarMenuSubItem key={subItem.title}>
+                        <SidebarMenuSubButton asChild>
+                          <a href={subItem.url}>
+                            <span>{subItem.title}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))}
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </>
+            ) : null}
+          </SidebarMenuItem>
+        </Collapsible>
       ))}
     </SidebarMenu>
   );
