@@ -39,6 +39,11 @@ const data: NavItems[] = [
     icon: MessageCircle,
   },
   {
+    title: "Analyze Document",
+    url: "/dashboard/analyze",
+    icon: FolderOpen,
+  },
+  {
     title: "Home",
     url: "/dashboard",
     icon: Home,
