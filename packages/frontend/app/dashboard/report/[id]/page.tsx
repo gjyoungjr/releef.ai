@@ -9,8 +9,7 @@ export default async function Page({
 
   return (
     <>
-      <PageBreadCrumb title="Report" />
-      <div>Report ID: {id}</div>
+      <PageBreadCrumb title="Run Assessment" />
     </>
   );
 }
