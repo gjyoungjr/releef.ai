@@ -1,13 +1,11 @@
 import React from "react";
 import { PageBreadCrumb } from "@/components/page-breadcrumb";
 
-export default async function Page() {
+export default function Dashboard() {
   return (
-    <>
-      <PageBreadCrumb title="Home | Releef.ai" />
-      <div>
-        <p>Home</p>
-      </div>
-    </>
+    <div>
+      <h1 className="text-2xl font-bold">Dashboard</h1>
+      <p className="mt-4">Welcome to your dashboard.</p>
+    </div>
   );
 }

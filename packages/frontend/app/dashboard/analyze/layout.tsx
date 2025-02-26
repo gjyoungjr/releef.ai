@@ -1,6 +1,11 @@
-"use client";
+// This is a server component (no "use client" here)
+import { Metadata } from 'next';
+import { AnalyzeLayoutClient } from "../../../components/analyze-layout-client";
 
-import { PageHeader } from "@/components/page-header";
+export const metadata: Metadata = {
+  title: 'Document Analysis - Releef.ai',
+  description: 'Analyze sustainability documents against compliance requirements'
+};
 
 export default function AnalyzeLayout({
   children,
@@ -8,12 +13,8 @@ export default function AnalyzeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <PageHeader
-        title="Document Analysis"
-        description="Analyze sustainability documents against compliance requirements"
-      />
+    <AnalyzeLayoutClient>
       {children}
-    </>
+    </AnalyzeLayoutClient>
   );
 }

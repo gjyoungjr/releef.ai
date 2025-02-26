@@ -2,13 +2,6 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Document Analysis - Releef.ai',
-  description: 'Analyze sustainability documents against compliance requirements'
-};
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -88,62 +81,6 @@ export default function DocumentAnalysis() {
       setAnalyzing(false);
     }
   };
-  const [documentText, setDocumentText] = useState('');
-  const [requirements, setRequirements] = useState<Requirement[]>([
-    { id: '1', text: '' }
-  ]);
-  const [analyzing, setAnalyzing] = useState(false);
-  const [results, setResults] = useState<RequirementMatch[]>([]);
-  const { toast } = useToast();
-
-  const addRequirement = () => {
-    setRequirements([
-      ...requirements,
-      { id: (requirements.length + 1).toString(), text: '' }
-    ]);
-  };
-
-  const updateRequirement = (id: string, text: string) => {
-    setRequirements(requirements.map(req =>
-      req.id === id ? { ...req, text } : req
-    ));
-  };
-
-  const analyzeDocument = async () => {
-    try {
-      setAnalyzing(true);
-      const response = await fetch('/dashboard/api/analyze', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          document_text: documentText,
-          requirements: requirements.filter(r => r.text.trim() !== '')
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Analysis failed');
-      }
-
-      const data = await response.json();
-      setResults(data.matches);
-      
-      toast({
-        title: "Analysis Complete",
-        description: "Document has been analyzed against all requirements.",
-      });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to analyze document. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setAnalyzing(false);
-    }
-  };
 
   return (
     <div className="space-y-8 py-6">
@@ -159,7 +96,7 @@ export default function DocumentAnalysis() {
             <Textarea
               placeholder="Paste your document text here..."
               value={documentText}
-              onChange={(e) => setDocumentText(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDocumentText(e.target.value)}
               className="min-h-[200px]"
             />
           </div>

@@ -12,11 +12,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <div className="flex flex-1 flex-col gap-4 px-4">{children}</div>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="flex min-h-screen">
+      <div className="flex-1">
+        <div className="container px-4 py-6 md:px-6 md:py-8">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 }
