@@ -54,7 +54,7 @@ const data: NavItems[] = [
       },
       {
         title: "Assessment",
-        url: "#",
+        url: "/dashboard/assessment",
       },
     ],
   },
