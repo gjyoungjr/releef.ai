@@ -25,7 +25,7 @@ export const ReportActions = ({ report }: { report: Report }) => {
       <DropdownMenuContent className="w-55">
         <DropdownMenuGroup>
           <DropdownMenuItem
-            onClick={() => router.push(`/dashboard/report/${reportId}`)}
+            onClick={() => router.push(`/dashboard/assessment`)}
           >
             <ShieldCheck />
             Verify compliance

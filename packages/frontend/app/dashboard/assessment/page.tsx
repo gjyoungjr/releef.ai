@@ -13,7 +13,7 @@ import {
   CircleDashed,
   Hourglass,
 } from "lucide-react";
-const DISCLOUSURES = [
+const DISCLOSURES = [
   {
     name: "Basis for preparation of sustainability statement",
     disclosure:
@@ -44,6 +44,54 @@ const DISCLOUSURES = [
       "The company has exercised the option under national transposition of the CSRD to withhold disclosure of a pending renewable energy investment due to ongoing negotiations. Certain supplier contract renegotiations involving ESG performance clauses have been omitted due to commercial sensitivity. Any omissions are disclosed in compliance with the materiality and transparency requirements of the ESRS framework.",
     status: "Met",
   },
+  {
+    name: "Disclosure of climate-related risks and opportunities",
+    disclosure:
+      "The sustainability statement identifies and assesses material climate-related risks, including transition risks associated with regulatory changes and physical risks due to extreme weather events. Risk management strategies align with TCFD recommendations.",
+    status: "Met",
+  },
+  {
+    name: "Disclosure of greenhouse gas (GHG) emissions",
+    disclosure:
+      "The company reports Scope 1, 2, and 3 GHG emissions in accordance with the Greenhouse Gas Protocol. Year-over-year comparisons highlight a 12% reduction in operational emissions due to energy efficiency improvements.",
+    status: "Met",
+  },
+  {
+    name: "Disclosure of biodiversity and ecosystem impact",
+    disclosure:
+      "A biodiversity impact assessment has been conducted to evaluate operational effects on local ecosystems. The company has committed to a no-deforestation policy and participates in habitat restoration projects.",
+    status: "Partial",
+  },
+  {
+    name: "Disclosure of employee diversity and inclusion metrics",
+    disclosure:
+      "Workforce diversity data includes gender representation at all organizational levels. 45% of management positions are held by women, and diversity training programs have been implemented across all departments.",
+    status: "Met",
+  },
+  {
+    name: "Disclosure of human rights due diligence",
+    disclosure:
+      "The company has implemented human rights due diligence processes for high-risk supply chain regions. Third-party audits and grievance mechanisms ensure compliance with international labor standards.",
+    status: "Partial",
+  },
+  {
+    name: "Disclosure of sustainability-related financial incentives for executives",
+    disclosure:
+      "Executive remuneration includes sustainability performance metrics such as carbon footprint reduction and diversity targets. 20% of annual bonuses are tied to ESG performance indicators.",
+    status: "Met",
+  },
+  {
+    name: "Disclosure of water usage and conservation efforts",
+    disclosure:
+      "The company tracks water consumption across all operations, with a 15% reduction target by 2030. Water recycling initiatives have been introduced at manufacturing sites.",
+    status: "Partial",
+  },
+  {
+    name: "Disclosure of circular economy initiatives",
+    disclosure:
+      "Product lifecycle assessments include recyclability and reuse potential. Circular economy initiatives have led to a 30% increase in the use of recycled materials in product packaging.",
+    status: "Met",
+  },
 ];
 
 export default async function Page() {
@@ -59,7 +107,7 @@ export default async function Page() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {DISCLOUSURES.map((disclosure, index) => (
+          {DISCLOSURES.map((disclosure, index) => (
             <TableRow key={index}>
               <TableCell className="align-top">
                 <div className="flex">
